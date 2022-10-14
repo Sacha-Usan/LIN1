@@ -1,2 +1,2 @@
 #!/bin/bash
-echo 'Bien le bonjour'
+echo 'Oyez Oyez'
