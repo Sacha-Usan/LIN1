@@ -1,1 +1,2 @@
-Bien le bonjour
+#!/bin/bash
+echo 'Bien le bonjour'
