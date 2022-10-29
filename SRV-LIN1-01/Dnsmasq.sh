@@ -11,7 +11,7 @@ listen-address=10.10.10.11
 domain=lin1.local
 
 dhcp-range=10.10.10.110,10.10.10.119,255.255.255.0,72h
-dhcp-option=3,10.10.10.1
+dhcp-option=3,10.10.10.11
 dhcp-option=40,lin1.local
 
 #Zone Directe
