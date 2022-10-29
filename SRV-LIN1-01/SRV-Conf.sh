@@ -3,7 +3,7 @@
 # Implémentation de la clef publique
 
 mkdir /home/cpnv/.ssh
-chmod 700 /home/cpnv/.ssh
+chmod 755 /home/cpnv/.ssh
 touch /home/cpnv/.ssh/authorized_keys
 
 cat << EOM > /home/cpnv/.ssh/authorized_keys
