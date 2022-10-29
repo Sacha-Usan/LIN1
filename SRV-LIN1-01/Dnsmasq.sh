@@ -24,3 +24,26 @@ ptr-record=11.10.10.10.in-addr-arpa.,"srv-lin1-01"
 ptr-record=22.10.10.10.in-addr-arpa.,"srv-lin1-02"
 ptr-record=33.10.10.10.in-addr-arpa.,"nas-lin1-01"
 EOM
+
+##########################
+# Définition fichier hosts
+
+cat << EOM > /etc/hosts
+127.0.0.1       localhost
+10.10.10.11     SRV-LIN1-01.lin1.local  SRV-LIN1-01
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+EOM
+
+#########################################
+# Définition du fichier de résolution DNS
+
+cat << EOM > /etc/resolv.conf
+domain  lin1.local
+search  lin1.local
+nameserver      10.10.10.11
+nameserver      10.10.10.1
+EOM
