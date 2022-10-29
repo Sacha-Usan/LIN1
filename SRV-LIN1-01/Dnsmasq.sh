@@ -7,7 +7,7 @@ cat << EOM > /etc/dnsmasq.conf
 domain-needed
 local=/lin1.local/
 interface=enp0s3
-listen-address=10.10.10.11
+listen-address=10.10.10.1
 domain=lin1.local
 
 dhcp-range=10.10.10.110,10.10.10.119,255.255.255.0,72h
