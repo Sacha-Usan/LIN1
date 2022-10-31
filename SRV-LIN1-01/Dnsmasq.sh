@@ -1,6 +1,12 @@
 #!/bin/bash
 
-####################################
+######################
+# Installation Dnsmasq
+
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install dnsmasq -y
+
+##################################
 # Configuration du fichier Dnsmasq
 
 cat << EOM > /etc/dnsmasq.conf
