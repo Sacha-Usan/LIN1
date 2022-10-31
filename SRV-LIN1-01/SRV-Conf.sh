@@ -8,7 +8,7 @@ chmod 755 /home/cpnv/.ssh
 touch /home/cpnv/.ssh/authorized_keys
 
 cat << EOM > /home/cpnv/.ssh/authorized_keys
-ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKtwmkAffyMfwgGnw+kgfgNHPmElZj9qMUlXPnQibizA/tzO3UEWapFiq1/0Rc6h2ixJFLvKeef5NnFo1AMDWNg= ecdsa-key-20221015
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGKTVL5KJxOEZexMz7uZgXTPbF9D5ZIADg0XTYzx56qw61aODbldQuKIOAZCxttxFhrP5jKIZ/qE1N7IrTqPDVM= ecdsa-key-20221031
 EOM
 
 cat << EOM > /etc/ssh/sshd_config
