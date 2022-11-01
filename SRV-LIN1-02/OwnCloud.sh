@@ -94,7 +94,7 @@ systemctl start mariadb
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS owncloud; \
 GRANT ALL PRIVILEGES ON owncloud.* \
   TO owncloud@localhost \
-  IDENTIFIED BY 'Pa$$w0rd'";
+  IDENTIFIED BY '${sec_db_pwd}'";
 
 ########################################
 # Activer les modules Apache recommandés
