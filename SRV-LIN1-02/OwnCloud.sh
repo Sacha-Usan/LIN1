@@ -52,8 +52,6 @@ apt install -y \
 
 cat << EOM > /etc/apache2/sites-available/owncloud.conf
 <VirtualHost *:80>
-# uncommment the line below if variable was set
-#ServerName $my_domain
 DirectoryIndex index.php index.html
 DocumentRoot /var/www/owncloud
 <Directory /var/www/owncloud>
@@ -119,7 +117,7 @@ occ maintenance:install \
 
 my_ip=$(hostname -I|cut -f1 -d ' ')
 occ config:system:set trusted_domains 1 --value="$my_ip"
-occ config:system:set trusted_domains 2 --value="$my_domain"
+occ config:system:set trusted_domains 2 --value="SRV-LIN1-02.lin1.local"
 
 ############################
 # Configurer les tâches cron
@@ -181,5 +179,5 @@ echo "Your Admin password is: "$sec_admin_pwd
 echo "It's documented at /etc/.sec_admin_pwd.txt"
 echo "Your Database Password is: "$sec_db_pwd
 echo "It's documented at /etc/.sec_db_pwd.txt and in your config.php"
-echo "Your ownCloud is accessable under: "$my_domain
+echo "Your ownCloud is accessable under: SRV-LIN1-02.lin1.local"
 echo "The Installation is complete."
