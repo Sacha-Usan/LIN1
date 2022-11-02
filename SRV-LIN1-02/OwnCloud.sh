@@ -1,15 +1,6 @@
 #!/bin/bash
 
 #################################
-# Définissez votre nom de domaine
-
-my_domain="SRV-LIN1-02.lin1.local"
-echo $my_domain
-
-hostnamectl set-hostname $my_domain
-hostname -f
-
-#################################
 # Générer des mots de passe forts
 
 sec_admin_pwd=$(openssl rand -base64 18)
