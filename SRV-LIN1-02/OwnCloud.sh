@@ -3,7 +3,7 @@
 #################################
 # Définissez votre nom de domaine
 
-my_domain="SRV-LIN1-01.lin1.local"
+my_domain="SRV-LIN1-02.lin1.local"
 echo $my_domain
 
 hostnamectl set-hostname $my_domain
