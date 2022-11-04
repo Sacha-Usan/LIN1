@@ -52,7 +52,6 @@ apt install -y \
 
 cat << EOM > /etc/apache2/sites-available/owncloud.conf
 <VirtualHost *:80>
-ServerName SRV-LIN1-02.lin1.local
 DirectoryIndex index.php index.html
 DocumentRoot /var/www/owncloud
 <Directory /var/www/owncloud>
