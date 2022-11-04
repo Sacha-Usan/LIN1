@@ -3,6 +3,8 @@
 ##########################################
 # Configuration des groupes d'utilisateurs
 
+touch /etc/ldap/content/base.ldif
+
 cat << EOM > /etc/ldap/content/base.ldif
 dn: ou=users,dc=lin1,dc=local
 objectClass: organizationalUnit
@@ -17,6 +19,8 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/base.ldif
 
 ##########################################
+
+touch /etc/ldap/content/groups.ldif
 
 cat << EOM > /etc/ldap/content/groups.ldif
 dn: cn=Managers,ou=groups,dc=lin1,dc=local
@@ -36,6 +40,8 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/groups.ldif
 
 #########################################
+
+touch /etc/ldap/content/users.ldif
 
 cat << EOM > /etc/ldap/content/users.ldif
 dn: uid=man1,ou=users,dc=lin1,dc=local
@@ -128,6 +134,8 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/users.ldif
 
 ##############################################
+
+touch /etc/ldap/content/addtogroup.ldif
 
 cat << EOM > /etc/ldap/content/addtogroup.ldif
 cat <<EOM >$LDAP_FILE
