@@ -1,9 +1,16 @@
 #!/bin/bash
 
+#####################################
+# Création répertoire et fichier ldif
+
+mkdir -p /etc/ldap/content
+
+chmod 755 /etc/ldap/content
+
+touch /etc/ldap/content/base.ldif /etc/ldap/content/groups.ldif /etc/ldap/content/users.ldif /etc/ldap/content/addtogroup.ldif
+
 ##########################################
 # Configuration des groupes d'utilisateurs
-
-nano /etc/ldap/content/base.ldif
 
 cat << EOM > /etc/ldap/content/base.ldif
 dn: ou=users,dc=lin1,dc=local
@@ -19,8 +26,6 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/base.ldif
 
 ##########################################
-
-nano /etc/ldap/content/groups.ldif
 
 cat << EOM > /etc/ldap/content/groups.ldif
 dn: cn=Managers,ou=groups,dc=lin1,dc=local
@@ -40,8 +45,6 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/groups.ldif
 
 #########################################
-
-nano /etc/ldap/content/users.ldif
 
 cat << EOM > /etc/ldap/content/users.ldif
 dn: uid=man1,ou=users,dc=lin1,dc=local
@@ -134,8 +137,6 @@ EOM
 ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/users.ldif
 
 ##############################################
-
-nano /etc/ldap/content/addtogroup.ldif
 
 cat << EOM > /etc/ldap/content/addtogroup.ldif
 cat <<EOM >$LDAP_FILE
