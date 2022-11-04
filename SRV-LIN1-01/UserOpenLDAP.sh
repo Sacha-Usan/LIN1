@@ -17,6 +17,7 @@ dn: ou=users,dc=lin1,dc=local
 objectClass: organizationalUnit
 objectClass: top
 ou: users
+
 dn: ou=groups,dc=lin1,dc=local
 objectClass: organizationalUnit
 objectClass: top
@@ -32,10 +33,12 @@ dn: cn=Managers,ou=groups,dc=lin1,dc=local
 objectClass: top
 objectClass: posixGroup
 gidNumber: 20000
+
 dn: cn=Ingenieurs,ou=groups,dc=lin1,dc=local
 objectClass: top
 objectClass: posixGroup
 gidNumber: 20010
+
 dn: cn=Devloppeurs,ou=groups,dc=lin1,dc=local
 objectClass: top
 objectClass: posixGroup
@@ -64,6 +67,7 @@ displayName: Man 1
 homeDirectory: /home/man1
 mail: man1@lin1.local
 description: Man 1 account
+
 dn: uid=man2,ou=users,dc=lin1,dc=local
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -81,6 +85,7 @@ displayName: Man 2
 homeDirectory: /home/man1
 mail: man2@lin1.local
 description: Man 2 account
+
 dn: uid=ing1,ou=users,dc=lin1,dc=local
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -98,6 +103,7 @@ displayName: Ing 1
 homeDirectory: /home/man1
 mail: ing1@lin1.local
 description: Ing 1 account
+
 dn: uid=ing2,ou=users,dc=lin1,dc=local
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -115,6 +121,7 @@ displayName: Ing 2
 homeDirectory: /home/man1
 mail: ing2@lin1.local
 description: Ing 2 account
+
 dn: uid=dev1,ou=users,dc=lin1,dc=local
 objectClass: inetOrgPerson
 objectClass: posixAccount
@@ -139,23 +146,26 @@ ldapadd -x -D cn=admin,dc=lin1,dc=local -W -f /etc/ldap/content/users.ldif
 ##############################################
 
 cat << EOM > /etc/ldap/content/addtogroup.ldif
-cat <<EOM >$LDAP_FILE
 dn: cn=Managers,ou=groups,dc=lin1,dc=local
 changetype: modify
 add: memberuid
 memberuid: man1
+
 dn: cn=Managers,ou=groups,dc=lin1,dc=local
 changetype: modify
 add: memberuid
 memberuid: man2
+
 dn: cn=Ingenieurs,ou=groups,dc=lin1,dc=local
 changetype: modify
 add: memberuid
 memberuid: ing1
+
 dn: cn=Ingenieurs,ou=groups,dc=lin1,dc=local
 changetype: modify
 add: memberuid
 memberuid: ing2
+
 dn: cn=Devloppeurs,ou=groups,dc=lin1,dc=local
 changetype: modify
 add: memberuid
