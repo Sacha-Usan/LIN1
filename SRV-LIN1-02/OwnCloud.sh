@@ -120,60 +120,8 @@ occ config:system:set trusted_domains 1 --value="$my_ip"
 occ config:system:set trusted_domains 2 --value="srv-lin1-02"
 occ config:system:set trusted_domains 3 --value="lin1.local"
 
-############################
-# Configurer les tâches cron
-
-occ background:cron
-
-echo "*/15  *  *  *  * /var/www/owncloud/occ system:cron" \
-  | sudo -u www-data -g crontab tee -a \
-  /var/spool/cron/crontabs/www-data
-echo "0  2  *  *  * /var/www/owncloud/occ dav:cleanup-chunks" \
-  | sudo -u www-data -g crontab tee -a \
-  /var/spool/cron/crontabs/www-data
-
-echo "1 */6 * * * /var/www/owncloud/occ user:sync \
-  'OCA\User_LDAP\User_Proxy' -m disable -vvv >> \
-  /var/log/ldap-sync/user-sync.log 2>&1" \
-  | sudo -u www-data -g crontab tee -a \
-  /var/spool/cron/crontabs/www-data
-mkdir -p /var/log/ldap-sync
-touch /var/log/ldap-sync/user-sync.log
-chown www-data. /var/log/ldap-sync/user-sync.log
-
-#############################################################
-# Configurer la mise en cache et le verrouillage des fichiers
-
-occ config:system:set \
-   memcache.local \
-   --value '\OC\Memcache\APCu'
-occ config:system:set \
-   memcache.locking \
-   --value '\OC\Memcache\Redis'
-occ config:system:set \
-   redis \
-   --value '{"host": "127.0.0.1", "port": "6379"}' \
-   --type json
-
-#####################################
-# Configurer la rotation des journaux
-
-sudo cat << EOM > /etc/logrotate.d/owncloud
-/var/www/owncloud/data/owncloud.log {
-  size 10M
-  rotate 12
-  copytruncate
-  missingok
-  compress
-  compresscmd /bin/gzip
-}
-EOM
-
 ##########################
 # Finaliser l'installation
-
-cd /var/www/
-chown -R www-data. owncloud
 
 occ -V
 echo "Your Admin password is: "$sec_admin_pwd
