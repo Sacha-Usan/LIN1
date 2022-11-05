@@ -118,7 +118,7 @@ occ maintenance:install \
 my_ip=$(hostname -I|cut -f1 -d ' ')
 occ config:system:set trusted_domains 1 --value="$my_ip"
 occ config:system:set trusted_domains 2 --value="srv-lin1-02"
-occ config:system:set trusted_domains 4 --value="lin1.local"
+occ config:system:set trusted_domains 3 --value="lin1.local"
 
 ############################
 # Configurer les tâches cron
